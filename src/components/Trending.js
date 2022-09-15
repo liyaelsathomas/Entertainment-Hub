@@ -2,21 +2,23 @@ import { Grid } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { APIKEY } from "../config/config";
+import Custompagination from "./Custompagination";
 import SingleContent from "./SingleContent";
 
 const Trending = () => {
   const [trending, setTrending] = useState([]);
+  const [page,setPage] = useState(1);
   const fetchTrending = async () => {
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/trending/all/day?api_key=${APIKEY}`
+      `https://api.themoviedb.org/3/trending/all/day?api_key=${APIKEY}&page=${page}`
     );
-    console.log(data);
     setTrending(data.results);
   };
 
   useEffect(() => {
     fetchTrending();
-  }, []);
+    // eslint-disable-next-line
+  }, [page]);
 
   return (
   <>
@@ -31,6 +33,7 @@ const Trending = () => {
         }
        
       </Grid>
+      <Custompagination setPage={setPage}/>
       </>
   );
 };

@@ -33,10 +33,26 @@ export default function Footer() {
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction label="Trending" icon={<RestoreIcon />} />
-        <BottomNavigationAction label="Movies" icon={<FavoriteIcon />} />
-        <BottomNavigationAction label="Series" icon={<LocationOnIcon />} />
-        <BottomNavigationAction label="Search" icon={<LocationOnIcon />} />
+        <BottomNavigationAction
+          sx={{ color: "white" }}
+          label="Trending"
+          icon={<RestoreIcon />}
+        />
+        <BottomNavigationAction
+          sx={{ color: "white" }}
+          label="Movies"
+          icon={<FavoriteIcon />}
+        />
+        <BottomNavigationAction
+          sx={{ color: "white" }}
+          label="Series"
+          icon={<LocationOnIcon />}
+        />
+        <BottomNavigationAction
+          sx={{ color: "white" }}
+          label="Search"
+          icon={<LocationOnIcon />}
+        />
       </BottomNavigation>
     </Box>
   );
