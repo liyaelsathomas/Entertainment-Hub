@@ -19,7 +19,8 @@ const Trending = () => {
   }, []);
 
   return (
-  
+  <>
+  <h3 style={{textAlign:'center',fontFamily:'Montserrat',fontWeight:'100',fontSize:'30px'}}>TRENDING TODAY</h3>
       <Grid container spacing={2}>
         {
           trending.map((trend) => (
@@ -30,7 +31,7 @@ const Trending = () => {
         }
        
       </Grid>
-    
+      </>
   );
 };
 
