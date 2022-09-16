@@ -13,12 +13,15 @@ const Movies = () => {
   const [genres, setGenres] = useState([]);
   const [selectedGenres, setSelectedGenres] = useState([]);
   const genreforURL = useGenre(selectedGenres);
+  const [numofPages, setNumofPages] = useState();
 
   const fetchMovies = async () => {
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreforURL}`
     );
     setMovies(data.results);
+    setNumofPages(data.total_pages)
+
   };
   useEffect(() => {
     fetchMovies();
@@ -48,7 +51,7 @@ const Movies = () => {
       />
       <Grid container spacing={2}>
         {movies.map((trend) => (
-          <Grid item xs={2} md={4} lg={2.4} key={trend.id}>
+          <Grid item xs={4} md={4} lg={2.4} key={trend.id}>
             <SingleContent
               details={trend}
               mediatype={trend.media_type}
@@ -58,7 +61,7 @@ const Movies = () => {
           </Grid>
         ))}
       </Grid>
-      <Custompagination setPage={setPage} page={page}/>
+      <Custompagination setPage={setPage} page={page} total_pages={numofPages}/>
     </>
   );
 };

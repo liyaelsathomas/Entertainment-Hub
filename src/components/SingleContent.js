@@ -1,30 +1,14 @@
 import { Badge, Box } from "@mui/material";
-import { hover } from "@testing-library/user-event/dist/hover";
-import React from "react";
 import { img_300, unavailable } from "../config/config";
+import BasicModal from './Contentmodal/ContentModal'
 
 const SingleContent = ({ details, mediatype, date, title }) => {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        width: "200px",
-        justifyContent: "space-between",
-        height: "100%",
-        backgroundColor: "#282c34",
-        borderRadius: "10px",
-        padding: "3px",
-        margin: "5px 0",
-       ' &:hover':{
-backgroundColor:'white',
-color:'black'
-        }
-      }}
-    >
+  
+      <BasicModal type={mediatype} id={details.id}>
       <Badge
         badgeContent={details.vote_average}
-        color={details.vote_average > 5 ? "primary" : "secondary"}
+        color={details.vote_average > 5 ? "primary" : "warning"}
       />
 
       <img
@@ -34,7 +18,7 @@ color:'black'
             : unavailable
         }
         alt={title}
-        style={{ borderRadius: "10px",objectFit:'cover' }}
+        style={{ borderRadius: "10px", objectFit: "cover" }}
       />
       <b
         className="title"
@@ -58,7 +42,8 @@ color:'black'
         <span>{mediatype === "TV" ? "TV Series" : "Movie"}</span>
         <span>{date}</span>
       </Box>
-    </Box>
+      </BasicModal>
+   
   );
 };
 

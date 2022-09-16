@@ -26,14 +26,14 @@ const Trending = () => {
       <Grid container spacing={2}>
         {
           trending.map((trend) => (
-            <Grid item xs={2} md={4} lg={2.4} key={trend.id}>
+            <Grid item xs={4} md={4} lg={2.4} key={trend.id}>
             <SingleContent details={trend} mediatype ={trend.media_type} date={trend.release_date || trend.first_air_date} title={trend.name || trend.original_title}/>
           </Grid>
           ))
         }
        
       </Grid>
-      <Custompagination setPage={setPage}/>
+      <Custompagination total_pages={10}  setPage={setPage}/>
       </>
   );
 };
